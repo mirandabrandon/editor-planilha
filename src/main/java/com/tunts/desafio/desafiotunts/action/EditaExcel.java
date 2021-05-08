@@ -26,28 +26,29 @@ public class EditaExcel {
 			for (int i = 3; i < sheetAlunos.getPhysicalNumberOfRows(); i++) {
 
 				Row row = sheetAlunos.getRow(i);
-				Cell cellFaltas = row.getCell(2);
-				Cell cellNota1 = row.getCell(3);
-				Cell cellNota2 = row.getCell(4);
-				Cell cellNota3 = row.getCell(5);
-				Cell cellSituacao = row.getCell(6);
-				Cell cellNotaAprovacaoFinal = row.getCell(7);
-
+				Cell cellFaltas = row.getCell(2, Row.CREATE_NULL_AS_BLANK);
+				Cell cellNota1 = row.getCell(3, Row.CREATE_NULL_AS_BLANK);
+				Cell cellNota2 = row.getCell(4, Row.CREATE_NULL_AS_BLANK);
+				Cell cellNota3 = row.getCell(5, Row.CREATE_NULL_AS_BLANK);
+				Cell cellSituacao = row.getCell(6, Row.CREATE_NULL_AS_BLANK);
+				Cell cellNotaAprovacaoFinal = row.getCell(7, Row.CREATE_NULL_AS_BLANK);
+				
+				
 				Double media = new Media().mediaCalculada(cellNota1, cellNota2, cellNota3);
 
 				if (cellFaltas.getNumericCellValue() / 60 > 0.25) {
 					cellSituacao.setCellValue("Reprovado por Falta");
-					cellNotaAprovacaoFinal.setCellValue("0");
+					cellNotaAprovacaoFinal.setCellValue(0.0);
 
 				} else if (cellFaltas.getNumericCellValue() / 60 <= 0.25 && media < 5) {
 					cellSituacao.setCellValue("Reprovado por Nota");
-					cellNotaAprovacaoFinal.setCellValue("0");
+					cellNotaAprovacaoFinal.setCellValue(0.0);
 				} else if (cellFaltas.getNumericCellValue() / 60 <= 0.25 && media >= 5 && media < 7) {
 					cellSituacao.setCellValue("Exame Final");
-					cellNotaAprovacaoFinal.setCellValue(10 - media);
-				} else if (cellFaltas.getNumericCellValue() / 60 <= 0.25 && media > 7) {
+					cellNotaAprovacaoFinal.setCellValue(new Arredondamento().Arrendondar(10 - media));
+				} else if (cellFaltas.getNumericCellValue() / 60 <= 0.25 && media > 7 && cellNotaAprovacaoFinal != null) {
 					cellSituacao.setCellValue("Aprovado");
-					cellNotaAprovacaoFinal.setCellValue("0");
+					cellNotaAprovacaoFinal.setCellValue(0.0);
 				}
 
 			}
@@ -61,6 +62,10 @@ public class EditaExcel {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.out.println("Arquivo Excel não encontrado!");
+
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			System.out.println("Informação não encontrada!");
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Erro na edição do arquivo!");

@@ -8,7 +8,9 @@ public class Media {
 
 	public double mediaCalculada(Cell cellNota1, Cell cellNota2, Cell cellNota3) {
 		media = (cellNota1.getNumericCellValue() + cellNota2.getNumericCellValue() + cellNota3.getNumericCellValue())
-				/ 3;
+				/ 30;
 		return media;
 	}
 }
+
+
