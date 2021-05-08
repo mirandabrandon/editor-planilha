@@ -32,6 +32,6 @@ Para executar o projeto, será necessário seguir os seguintes passos:
 
 Feito com ❤️ por Brandon Miranda 
 
-[![Linkedin Badge](https://img.shields.io/badge/Brandon-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/brandon-miranda-52aa3415a/)]https://www.linkedin.com/in/brandon-miranda-52aa3415a/) 
+[![Linkedin Badge](https://img.shields.io/badge/Brandon-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/brandon-miranda-52aa3415a/)] https://www.linkedin.com/in/brandon-miranda-52aa3415a/) 
 
 [![Gmail Badge](https://img.shields.io/badge/-brandon.dev1998@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:brandon.dev1998@gmail.com)](mailto:brandon.dev1998@gmail.com)
